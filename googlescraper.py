@@ -4,7 +4,7 @@ from google import google
 from bs4 import BeautifulSoup
 
 num_page = 1
-url = ""
+url = " "
 for args in sys.argv[1:]:
     url += args
     url += " "
