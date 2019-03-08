@@ -10,16 +10,10 @@ for args in sys.argv[1:]:
     url += " "
 url += "lyrics"
 search_results = google.search(url, num_page)
-#for result in search_results:
-#    print(result.link)
-if len(search_results) > 0:
-    first_url = search_results[0].link
-    if "songtexte.com" in first_url:
-        page = urllib2.urlopen(first_url)
-    #    print(page.read())
-        soup = BeautifulSoup(page.read(), 'html.parser')
-    #    print(soup.prettify())
-        #print(soup.get_text())
-        print(soup.find(id="lyrics").get_text())
-    #    for div in soup.find_all('div'):
-            #print(div.get('lyrics'))
+for result in search_results:
+    if "songtexte.com" in result.link:
+        if len(search_results) > 0:
+            page = urllib2.urlopen(result.link)
+            soup = BeautifulSoup(page.read(), 'html.parser')
+            print(soup.find(id="lyrics").get_text())
+            exit()
