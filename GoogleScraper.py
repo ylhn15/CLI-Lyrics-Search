@@ -14,11 +14,12 @@ search_results = google.search(url, num_page)
 #    print(result.link)
 if len(search_results) > 0:
     first_url = search_results[0].link
-    page = urllib2.urlopen(first_url)
-#    print(page.read())
-    soup = BeautifulSoup(page.read(), 'html.parser')
-#    print(soup.prettify())
-    #print(soup.get_text())
-    print(soup.find(id="lyrics").get_text())
-#    for div in soup.find_all('div'):
-        #print(div.get('lyrics'))
+    if "songtexte.com" in first_url:
+        page = urllib2.urlopen(first_url)
+    #    print(page.read())
+        soup = BeautifulSoup(page.read(), 'html.parser')
+    #    print(soup.prettify())
+        #print(soup.get_text())
+        print(soup.find(id="lyrics").get_text())
+    #    for div in soup.find_all('div'):
+            #print(div.get('lyrics'))
